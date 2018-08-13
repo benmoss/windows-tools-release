@@ -1,8 +1,8 @@
 ---
-name: diego-ssh
+name: winpty
 
 dependencies:
 - golang-windows
 
 files:
-- code.cloudfoundry.org/diego-ssh/*
+- winpty.tgz

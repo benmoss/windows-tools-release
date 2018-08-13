@@ -8,6 +8,8 @@ if (!$mtx.WaitOne(5000)) {
 }
 
 $ssh_home="C:\"
+$env:HKLM_ENV="HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
+$env:SERVICE_WRAPPER_URL="https://github.com/kohsuke/winsw/releases/download/winsw-v2.1.2/WinSW.NET4.exe"
 
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub -OutFile "$ssh_home\authorized_key" -UseBasicParsing
 $env:SSH_AUTHORIZEDKEY="$(cat $ssh_home\authorized_key)"
@@ -40,17 +42,5 @@ netsh advfirewall firewall add rule name="ssh" dir=in action=allow protocol=TCP 
 if ($LASTEXITCODE -ne 0) {
   exit $LASTEXITCODE
 }
-
-$GoRoot='C:\var\vcap\packages\golang-windows\go'
-
-$OldPath=(Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).Path
-$AddedFolder="$GoRoot\bin"
-
-if (-not $OldPath.Contains($AddedFolder)) {
-  $NewPath=$OldPath+';'+$AddedFolder
-  Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $newPath
-}
-
-Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name GOROOT -Value $GoRoot
 
 $mtx.ReleaseMutex()

@@ -3,11 +3,7 @@ trap { $host.SetShouldExit(1) }
 
 $BOSH_INSTALL_TARGET = Resolve-Path "${env:BOSH_INSTALL_TARGET}"
 
-$env:WINPTY_URL="https://s3.amazonaws.com/diego-release-blobs/53072e58-c940-41f2-7844-95f46adf90ab"
-
-Invoke-WebRequest -UseBasicParsing -Uri "$env:WINPTY_URL" -OutFile "$env:TEMP/winpty.tgz"
-
-tar -xzvf "$env:TEMP/winpty.tgz" -C "$BOSH_INSTALL_TARGET"
+tar -xzvf "winpty.tgz" -C "$BOSH_INSTALL_TARGET"
 
 if ($LASTEXITCODE -ne 0) {
   exit $LASTEXITCODE

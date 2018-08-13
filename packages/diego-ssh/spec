@@ -5,4 +5,4 @@ dependencies:
 - golang-windows
 
 files:
-- code.cloudfoundry.org/diego-ssh/*
+- code.cloudfoundry.org/diego-ssh/**/*

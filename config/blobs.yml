@@ -38,15 +38,18 @@ mingw/x86_64-7.2.0-release-posix-seh-rt_v5-rev0.7z:
   size: 48975566
   object_id: 9eda914e-e920-434b-4535-f2c397497817
   sha: 5e4ca4485384f04399ae0aa06bab509721c50095
-processhacker/processhacker-2.39-bin.zip:
-  size: 3392412
-  object_id: 52e8388f-8ea2-4a7e-5a38-acc1982023d3
-  sha: 8e8f8423d163d922242b8b7d85427664f77edc97
 perl64/strawberry-perl-5.26.1.1-64bit.msi:
   size: 99017793
   object_id: 2a69a764-bd03-405f-4b7c-9d0d4b281aac
   sha: 871668bc5b45b8ba2a319602a6592c5e18d88cce
+processhacker/processhacker-2.39-bin.zip:
+  size: 3392412
+  object_id: 52e8388f-8ea2-4a7e-5a38-acc1982023d3
+  sha: 8e8f8423d163d922242b8b7d85427664f77edc97
 ruby/ruby-2.3.3-x64.exe:
   size: 19668866
   object_id: 331c4055-4638-4076-5e25-4c22217c5c55
   sha: 83ae5e6282a2b7e21bb61c5b4d1b184c33edbd2a
+winpty.tgz:
+  size: 460765
+  sha: 6bfe1962c47f10c1081410982d06b6eefaeb231c
