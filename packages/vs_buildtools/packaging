@@ -1,0 +1,20 @@
+$ErrorActionPreference = "Stop";
+trap { $host.SetShouldExit(1) }
+
+$BOSH_INSTALL_TARGET = Resolve-Path $env:BOSH_INSTALL_TARGET
+$path=(Get-ChildItem "vs_buildtools/vs_buildtools-*.zip").FullName
+
+if (Get-Command Expand-Archive -ErrorAction SilentlyContinue) {
+  Expand-Archive -Path $path -DestinationPath $env:TEMP
+} else {
+  Add-Type -AssemblyName System.IO.Compression.FileSystem
+  [System.IO.Compression.ZipFile]::ExtractToDirectory($path, $env:TEMP)
+}
+
+cmd.exe /s /c "$env:TEMP\vs_buildtools.exe --installPath $BOSH_INSTALL_TARGET --passive --wait --norestart --nocache --add Microsoft.VisualStudio.Component.VC.CoreBuildTools --add Microsoft.VisualStudio.Component.VC.Redist.14.Latest --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows10SDK --add Microsoft.VisualStudio.Component.Windows10SDK.17134"
+
+if ($LASTEXITCODE -ne 0) {
+	echo "VS Build Tools install failed: $LASTEXITCODE"
+	exit $LASTEXITCODE
+}
+Remove-Item "$env:TEMP\vs_buildtools.exe"
