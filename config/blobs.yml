@@ -44,6 +44,9 @@ mingw/x86_64-7.2.0-release-posix-seh-rt_v5-rev0.7z:
 msys2/msys2-base-x86_64-20180531.tar.xz:
   size: 53376740
   sha: 309f604a165179d50fbe4131cf87bd160769f974
+ninja/ninja-win-v1.8.2.zip:
+  size: 247692
+  sha: 637cc6e144f5cc7c6388a30f3c32ad81b2e0442e
 perl64/strawberry-perl-5.26.1.1-64bit.msi:
   size: 99017793
   object_id: 2a69a764-bd03-405f-4b7c-9d0d4b281aac
@@ -52,6 +55,9 @@ processhacker/processhacker-2.39-bin.zip:
   size: 3392412
   object_id: 52e8388f-8ea2-4a7e-5a38-acc1982023d3
   sha: 8e8f8423d163d922242b8b7d85427664f77edc97
+python/python-2.7.15.amd64.zip:
+  size: 19662180
+  sha: e45d4af4018444dfa0912030f0dd1c3330368918
 ruby/ruby-2.3.3-x64.exe:
   size: 19668866
   object_id: 331c4055-4638-4076-5e25-4c22217c5c55

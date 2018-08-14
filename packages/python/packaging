@@ -1,0 +1,18 @@
+$ErrorActionPreference = "Stop";
+trap { $host.SetShouldExit(1) }
+
+$BOSH_INSTALL_TARGET = Resolve-Path $env:BOSH_INSTALL_TARGET
+$path=(Get-ChildItem "python/python*.zip").FullName
+
+if (Get-Command Expand-Archive -ErrorAction SilentlyContinue) {
+  Expand-Archive -Path $path -DestinationPath ${BOSH_INSTALL_TARGET}
+} else {
+  Add-Type -AssemblyName System.IO.Compression.FileSystem
+  [System.IO.Compression.ZipFile]::ExtractToDirectory($path, ${BOSH_INSTALL_TARGET})
+}
+
+$msiFile=(Get-ChildItem "${BOSH_INSTALL_TARGET}/*.msi").FullName
+Start-Process -FilePath msiexec -ArgumentList "/i $msiFile /qn ALLUSERS=1 ADDLOCAL=ALL TargetDir=${BOSH_INSTALL_TARGET}" -Wait -NoNewWindow
+
+remove-item $msiFile
+exit 0
