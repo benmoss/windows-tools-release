@@ -11,8 +11,5 @@ if (Get-Command Expand-Archive -ErrorAction SilentlyContinue) {
   [System.IO.Compression.ZipFile]::ExtractToDirectory($path, ${BOSH_INSTALL_TARGET})
 }
 
-$msiFile=(Get-ChildItem "${BOSH_INSTALL_TARGET}/*.msi").FullName
-Start-Process -FilePath msiexec -ArgumentList "/i $msiFile /qn ALLUSERS=1 ADDLOCAL=ALL TargetDir=${BOSH_INSTALL_TARGET}" -Wait -NoNewWindow
 
-remove-item $msiFile
 exit 0
