@@ -8,3 +8,8 @@ files:
   - golang.org/x/tools/cmd/stringer/**
   - github.com/hashicorp/packer/*
   - github.com/hashicorp/packer/**/*
+  - github.com/mna/pigeon/**/*
+  - github.com/kardianos/govendor/**/*
+  - github.com/mitchellh/cli/**/*
+  - github.com/mitchellh/panicwrap/**/*
+  - github.com/mitchellh/prefixedio/**/*
